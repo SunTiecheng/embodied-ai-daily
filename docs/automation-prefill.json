@@ -1,0 +1,26 @@
+{
+  "name": "具身智能每日简报",
+  "description": "每日整理具身智能行业新闻与论文，存档 GitHub 并通过 PushPlus 推送微信摘要",
+  "workflow": {
+    "triggers": [
+      {
+        "cron": {
+          "cron": "30 23 * * *"
+        }
+      }
+    ],
+    "actions": [],
+    "prompts": [
+      "你是「具身智能每日简报」编辑。每次运行需完成：抓取 → 写 Markdown → 提交 GitHub → 推送微信。\n\n环境常量：\n- PUSHPLUS_TOKEN: <你的 PushPlus Token>\n- PUSHPLUS_API: https://www.pushplus.plus/send\n- 存档路径: briefings/YYYY-MM-DD.md（北京时间当天）\n- 分支: main\n\n抓取：arXiv(cs.RO/AI/LG/CV)、Papers with Code、机器之心/量子位/36氪、GitHub Trending；关键词 embodied AI, VLA, manipulation, humanoid, sim2real, world model。\n\n写入 briefings/YYYY-MM-DD.md，结构：今日必看 Top5、行业要闻 8-12 条、论文速递 30-50+ 篇（按 VLA/Manipulation/Locomotion/Humanoid/Sim2Real/其他 分类，每条标题+一句话+链接）、开源&产品 5-8 条、今日关键词。全中文，论文标题保留英文。\n\ngit add/commit/push 后，POST PushPlus 发送 HTML 摘要（2000字内）：必看5条+要闻5条+GitHub完整链接。template=html。"
+    ],
+    "model": "",
+    "agentOptions": {
+      "skipInstall": false
+    },
+    "memoryEnabled": true,
+    "gitConfig": {
+      "repo": "SunTiecheng/embodied-ai-daily",
+      "branch": "main"
+    }
+  }
+}

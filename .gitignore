@@ -1,0 +1,4 @@
+.env
+*.local
+docs/automation-prefill.local.json
+.DS_Store
