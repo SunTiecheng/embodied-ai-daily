@@ -106,6 +106,7 @@ def post_feishu(webhook: str, secret: str, body_text: str) -> None:
 def send_feishu(text: str, title: str, retry: bool = True) -> None:
     webhook = env("FEISHU_WEBHOOK")
     secret = env("FEISHU_SECRET")
+    keyword = env("FEISHU_KEYWORD", "简报")
     if not webhook:
         raise RuntimeError("FEISHU_WEBHOOK not set")
 
@@ -113,10 +114,10 @@ def send_feishu(text: str, title: str, retry: bool = True) -> None:
     total = len(chunks)
 
     for i, chunk in enumerate(chunks, 1):
-        part_title = f"日报 {i}/{total}" if total > 1 else "日报"
-        body_text = f"{part_title}\n\n{chunk}"
-        if "日报" not in body_text:
-            body_text = f"日报\n\n{body_text}"
+        part_title = f"{keyword} {i}/{total}" if total > 1 else keyword
+        body_text = f"具身智能日报 | {part_title}\n\n{chunk}"
+        if keyword not in body_text:
+            body_text = f"{keyword}\n\n{body_text}"
 
         try:
             post_feishu(webhook, secret, body_text)

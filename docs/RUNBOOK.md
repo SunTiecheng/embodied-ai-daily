@@ -19,7 +19,7 @@
 | SMTP_PASS | （Automation Secrets 中配置） |
 | FEISHU_WEBHOOK | （Automation Secrets 中配置） |
 | FEISHU_SECRET | 空则不加签名 |
-| FEISHU_KEYWORD | 日报 |
+| FEISHU_KEYWORD | 简报（飞书机器人安全设置中的自定义关键词） |
 
 ## 信息源
 
@@ -55,8 +55,8 @@ python3 scripts/send_briefing.py briefings/YYYY-MM-DD.md
 
 ### 飞书
 - 完整简报原文推送至 FEISHU_WEBHOOK
-- 每条消息标题须含「日报」（关键词过滤）
-- 单条超 15000 字按 `##` 章节拆成多条（日报 1/N、2/N…）
+- 每条消息须含飞书机器人配置的关键词（当前为「简报」）
+- 单条超 15000 字按 `##` 章节拆成多条（简报 1/N、2/N…）
 - `msg_type`: text
 - FEISHU_SECRET 非空时加签名
 
