@@ -138,7 +138,8 @@ def main() -> int:
     )
     feishu_secret = os.environ.get("FEISHU_SECRET", "")
 
-    subject = f"具身智能日报 {date_str}"
+    # 飞书 webhook 关键词可能为「日报」或「简报」，标题同时包含两者
+    subject = f"具身智能简报日报 {date_str}"
     html = md_to_html(md)
 
     print(f"Sending email to {mail_to}...")
@@ -148,7 +149,7 @@ def main() -> int:
     chunks = split_by_sections(md)
     total = len(chunks)
     for i, chunk in enumerate(chunks, 1):
-        title = f"具身智能日报 {date_str}" + (f" {i}/{total}" if total > 1 else "")
+        title = f"具身智能简报日报 {date_str}" + (f" {i}/{total}" if total > 1 else "")
         print(f"Sending Feishu {i}/{total} ({len(chunk)} chars)...")
         send_feishu(feishu_webhook, feishu_secret, title, chunk)
     print("Feishu sent.")
