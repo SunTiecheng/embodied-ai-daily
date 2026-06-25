@@ -66,3 +66,9 @@ python3 scripts/send_briefing.py briefings/YYYY-MM-DD.md
 - 禁止只发摘要
 - 飞书或邮件失败重试一次
 - 简报须含「世界模型专题」「具身仿真专题」独立章节
+
+## 2026-06-25 完成
+- 简报 briefings/2026-06-25.md（70 篇论文，含世界模型/仿真专题）
+- 邮件推送成功
+- 飞书推送成功（FEISHU_KEYWORD=简报）
+- arXiv 通过 RSS feed 抓取（API 429 时限流）
