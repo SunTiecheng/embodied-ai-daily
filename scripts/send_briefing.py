@@ -38,8 +38,7 @@ def md_to_html(md: str) -> str:
         '<!DOCTYPE html><html><head><meta charset="utf-8">',
         "<style>body{font-family:sans-serif;line-height:1.6;max-width:900px;margin:2em auto;padding:0 1em;}"
         "h1,h2,h3{color:#1a1a2e;}a{color:#0066cc;}blockquote{border-left:4px solid #ccc;padding-left:1em;color:#555;}"
-        "hr{border:none;border-top:1px solid #ddd;margin:2em 0;}"
-        "table{border-collapse:collapse;width:100%;}th,td{border:1px solid #ddd;padding:8px;}</style></head><body>",
+        "hr{border:none;border-top:1px solid #ddd;margin:2em 0;}</style></head><body>",
     ]
     in_list = False
     in_para = False
@@ -84,17 +83,6 @@ def md_to_html(md: str) -> str:
             close_para()
             close_list()
             html_parts.append("<hr>")
-        elif stripped.startswith("|") and "|" in stripped[1:]:
-            close_para()
-            close_list()
-            cells = [c.strip() for c in stripped.strip("|").split("|")]
-            tag = "th" if cells and all(re.match(r"^[-:]+$", c) for c in cells):
-                continue
-            if cells and all(re.match(r"^[-:]+$", c) for c in cells):
-                continue
-            if not hasattr(md_to_html, "_in_table"):
-                pass
-            html_parts.append(f"<tr>{''.join(f'<td>{inline(c)}</td>' for c in cells)}</tr>")
         elif stripped.startswith("- "):
             close_para()
             if not in_list:
