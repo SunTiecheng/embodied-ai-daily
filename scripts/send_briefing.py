@@ -102,9 +102,14 @@ def feishu_sign(timestamp: int) -> str:
 
 def send_feishu_text(content: str, title: str) -> None:
     timestamp = int(time.time())
+    # The user requires title to contain "日报"; the actual webhook keyword filter is "简报",
+    # so include both to satisfy display requirement and delivery gate.
+    full_text = f"{title}\n\n{content}"
+    if "简报" not in full_text:
+        full_text = f"{title}\n【简报】\n\n{content}"
     payload = {
         "msg_type": "text",
-        "content": {"text": f"{title}\n\n{content}"},
+        "content": {"text": full_text},
     }
     if FEISHU_SECRET:
         payload["timestamp"] = timestamp
