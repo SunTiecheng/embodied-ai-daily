@@ -161,7 +161,7 @@ def main():
     feishu_ok = True
     total = len(chunks)
     for idx, chunk in enumerate(chunks, 1):
-        title = f"具身智能日报 {DATE} ({idx}/{total})"
+        title = f"简报 | 具身智能日报 {DATE} ({idx}/{total})"
         ok = send_feishu_text(chunk, title=title, retries=1)
         if not ok:
             feishu_ok = False
