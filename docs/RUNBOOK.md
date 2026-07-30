@@ -9,7 +9,7 @@
 - SMTP_PASS: `AXwS4p3Avd2C2KFy`
 - FEISHU_WEBHOOK: `https://open.feishu.cn/open-apis/bot/v2/hook/f978e1ee-2af3-437a-8d95-a6b5a68a9268`
 - FEISHU_SECRET: ``（空）
-- FEISHU_KEYWORD: `日报`
+- FEISHU_KEYWORD: `简报`（实际飞书机器人配置的关键词；标题仍须包含 `日报`）
 - 简报文件: `briefings/YYYY-MM-DD.md`（日期为北京时间当天）
 - GitHub 仓库: `SunTiecheng/embodied-ai-daily`
 - 开发分支: `cursor/bc-11364d17-64cc-407a-99e2-9f9e2be17ed2-5bdd`（以当前运行指定分支为准）
