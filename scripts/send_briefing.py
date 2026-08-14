@@ -143,11 +143,12 @@ def send_feishu_chunks(title_prefix, full_text):
 
     total = len(chunks)
     for idx, chunk in enumerate(chunks, 1):
+        # Title must contain "日报" per user requirement; keyword must match Feishu bot security setting.
         header = f"{keyword} {title_prefix}"
         if total > 1:
             header = f"{keyword} {title_prefix} {idx}/{total}"
-        # Ensure keyword appears in body
-        body = f"{header}\n\n{chunk.replace(title_prefix, '').strip()}\n\n{keyword}"
+        # Ensure both keyword and "日报" appear in the body text.
+        body = f"{header}\n\n{chunk.replace(title_prefix, '').strip()}\n\n{keyword} 日报"
 
         payload = {"msg_type": "text", "content": {"text": body}}
         headers = {}
