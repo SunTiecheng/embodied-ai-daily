@@ -9,7 +9,7 @@ from urllib import request
 import markdown
 
 # Constants
-DATE = "2026-09-06"
+DATE = "2026-09-10"
 BRIEFING_FILE = f"briefings/{DATE}.md"
 MAIL_TO = "tiechengsun@126.com"
 SMTP_HOST = "smtp.126.com"
